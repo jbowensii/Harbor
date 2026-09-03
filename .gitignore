@@ -1,0 +1,13 @@
+# Build output
+bin/
+obj/
+*.user
+
+# Local install / run artefacts
+*.log
+harbor.log*
+
+# Personal configuration. servers.seed.json in this repo is a generic example;
+# a real one holds machine-specific paths and internal hostnames.
+seed/servers.backup-*.json
+seed/servers.local.json

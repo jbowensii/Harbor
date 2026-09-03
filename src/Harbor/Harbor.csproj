@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>Harbor</AssemblyName>
+    <RootNamespace>Harbor</RootNamespace>
+    <Version>0.1.0</Version>
+    <Product>Harbor</Product>
+    <Description>Local server manager - store, launch, monitor and stop local web servers.</Description>
+    <Company>John Bowens</Company>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>harbor.ico</ApplicationIcon>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Same artwork as the exe icon, used for the in-app wordmark. -->
+    <Resource Include="harbor.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Copied next to the exe; ConfigStore imports it on first run only. -->
+    <None Include="..\..\seed\servers.seed.json" Link="servers.seed.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
