@@ -60,8 +60,15 @@ Add `--self-contained true` for a build that does not need the runtime installed
 
 ## Install
 
-There is no installer. Harbor is a single executable and copying it into place is the whole
-procedure.
+**Installer (recommended):** download `HarborSetup.exe` from the
+[latest release](https://github.com/jbowensii/Harbor/releases) and run it. It installs the
+executable to `%LOCALAPPDATA%\harbor`, puts a Harbor shortcut on the desktop, and seeds an empty
+configuration in `%APPDATA%\Harbor` on first install (an existing configuration is never
+touched). Per-user install — no admin rights needed. Uninstall from *Settings → Apps* as usual;
+your configuration is kept.
+
+**Manual install** works exactly as before — Harbor is a single executable and copying it into
+place is the whole procedure.
 
 1. **Get the exe** — download `Harbor.exe` from the
    [latest release](https://github.com/jbowensii/Harbor/releases), or build it yourself with the

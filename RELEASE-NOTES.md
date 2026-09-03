@@ -1,5 +1,26 @@
 # Release notes
 
+## 0.2.0 — 3 September 2026
+
+Installer release. No changes to the application itself.
+
+**Windows installer**
+`HarborSetup.exe` (Inno Setup) replaces the manual copy-into-place procedure. It is a per-user
+install — no admin rights, no UAC prompt. The executable and icon go to `%LOCALAPPDATA%\harbor`,
+a Harbor shortcut is placed on the desktop (icon taken from `harbor.ico`, not the exe), and an
+uninstaller is registered.
+
+**Configuration seeding**
+First install writes an empty `servers.json` to `%APPDATA%\Harbor` — where Harbor actually reads
+it. The file is marked *only-if-doesn't-exist*: reinstalling or upgrading never touches an
+existing configuration, and uninstalling never deletes it.
+
+**Signed binaries**
+`Harbor.exe` and `HarborSetup.exe` are code-signed (SSL.com), so SmartScreen no longer warns on
+first run.
+
+The installer script lives in `build/installer/harbor.iss`.
+
 ## 0.1.0 — 2 September 2026
 
 First release. Harbor stores your local dev servers, launches them, shows whether they are

@@ -13,3 +13,6 @@ seed/
 servers.json
 servers*.json
 !src/**/*.json
+
+# Installer build output
+build/installer/Output/

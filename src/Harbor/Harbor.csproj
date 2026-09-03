@@ -8,7 +8,7 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>Harbor</AssemblyName>
     <RootNamespace>Harbor</RootNamespace>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <Product>Harbor</Product>
     <Description>Local server manager - store, launch, monitor and stop local web servers.</Description>
     <Company>John Bowens</Company>
