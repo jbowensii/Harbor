@@ -7,7 +7,9 @@ obj/
 *.log
 harbor.log*
 
-# Personal configuration. servers.seed.json in this repo is a generic example;
-# a real one holds machine-specific paths and internal hostnames.
-seed/servers.backup-*.json
-seed/servers.local.json
+# Configuration is never committed. It holds machine-specific paths, internal
+# hostnames and port layouts, and belongs to the machine, not the repo.
+seed/
+servers.json
+servers*.json
+!src/**/*.json

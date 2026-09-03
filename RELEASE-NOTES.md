@@ -59,8 +59,9 @@ loads also log a listing of the config folder as that process saw it.
 - A config that fails to parse is preserved as `servers.json.broken-<timestamp>` instead of being
   overwritten.
 - A config with neither servers nor categories is treated as damage and restored from
-  `servers.seed.json`. That state cannot arise in normal use — deleting the last server leaves
-  the categories behind — so nothing deliberately removed is resurrected.
+  `servers.seed.json`, if you have chosen to place one next to the exe. That state cannot arise
+  in normal use — deleting the last server leaves the categories behind — so nothing
+  deliberately removed is resurrected.
 - The application icon is a crop of the source artwork, not a copy of it: the original has a thin
   ring and hairline detail that collapse below 48px, so the icon zooms past the ring and adds a
   hairline rim that survives 16px.
@@ -72,6 +73,16 @@ loads also log a listing of the config folder as that process saw it.
 - Status detection is TCP-only. A UDP-based service will always read as stopped.
 - Harbor does not restart a server that exits on its own; it reports the exit code and waits.
 - There is no autostart-on-login option yet.
+
+### Install
+
+There is no installer. Copy `Harbor.exe` into a folder of your choice — `%APPDATA%\Harbor\` is a
+good default — put `harbor.ico` beside it, and make a Desktop shortcut whose icon points at the
+`.ico` rather than the exe. Full steps are in the README. Nothing is written to the registry and
+no startup entry is created; uninstalling is deleting the exe and the `%APPDATA%\Harbor` folder.
+
+No configuration ships with the release. The first launch starts with an empty list — press
+**Add server**.
 
 ### Requirements
 

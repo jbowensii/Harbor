@@ -60,28 +60,47 @@ Add `--self-contained true` for a build that does not need the runtime installed
 
 ## Install
 
-Harbor is xcopy-deployable. Put `Harbor.exe` wherever you like — `%APPDATA%\Harbor\` is a
-reasonable home — and make a shortcut to it.
+There is no installer. Harbor is a single executable and copying it into place is the whole
+procedure.
 
-Two notes worth knowing:
+1. **Get the exe** — download `Harbor.exe` from the
+   [latest release](https://github.com/jbowensii/Harbor/releases), or build it yourself with the
+   publish command above.
+2. **Choose a folder.** `%APPDATA%\Harbor\` works well: paste
+   `%APPDATA%\Harbor` into the Explorer address bar, create the folder, and drop `Harbor.exe` in.
+   Any folder you can write to is fine — Harbor keeps its configuration in `%APPDATA%\Harbor\`
+   regardless of where the exe lives.
+3. **Copy `harbor.ico`** (from `src/Harbor/` in this repo) next to the exe.
+4. **Make a shortcut.** Right-drag `Harbor.exe` to the Desktop → *Create shortcuts here*. Then
+   right-click the shortcut → *Properties* → *Change Icon* → browse to `harbor.ico`.
 
-- Point the shortcut's **icon at `harbor.ico`**, not at the exe. The Windows shell extracts icons
-  from single-file .NET executables unreliably, and the shortcut loses its icon on reinstall.
-- Copy `servers.seed.json` next to the exe. On first run, when there is no `servers.json`, Harbor
-  imports the seed — which makes it a useful restore point as well as a first-run example.
+   Point the icon at **`harbor.ico`, not at the exe**. The Windows shell extracts icons from
+   single-file .NET executables unreliably, and a shortcut that takes its icon from the exe tends
+   to lose it whenever the exe is replaced.
+5. **Run it.** The first launch starts with an empty list. Press **Add server** to create your
+   first entry.
+
+To uninstall, delete the exe and the `%APPDATA%\Harbor` folder. Nothing is written to the
+registry, and no services or startup entries are created.
 
 ## Files
 
-Everything lives in `%APPDATA%\Harbor\`:
+Harbor keeps everything in `%APPDATA%\Harbor\`. The **Config** button in the header opens that
+folder.
 
 | File | Purpose |
 |---|---|
 | `servers.json` | Your configuration: theme, ordered categories, servers |
 | `servers.json.bak` | Previous generation, rewritten on each save |
-| `servers.seed.json` | Imported when `servers.json` is missing |
 | `harbor.log` | Activity log, rolls to `harbor.log.1` at 1 MB |
+| `servers.seed.json` | *Optional.* If present next to the exe, it is imported when `servers.json` is missing |
 
-The **Config** button in the header opens that folder.
+**No configuration ships with this repository.** `servers.json` describes one particular machine —
+local paths, ports, sometimes internal hostnames — so it is yours to create and is git-ignored
+here.
+
+`servers.seed.json` is a convenience you can opt into: copy your own `servers.json` next to the
+exe under that name and it becomes a restore point, re-imported if the live config is ever lost.
 
 Saves go to a temp file and are then swapped in, so an interrupted save cannot truncate the real
 one. A config that fails to parse is copied to `servers.json.broken-<timestamp>` rather than
@@ -115,7 +134,6 @@ src/Harbor/
   Views/        MainWindow, EditServerWindow, CategoryManagerWindow, TextPromptWindow
   Themes/       Light.xaml and Dark.xaml - the whole design system, twice
 build/          make-icon.ps1 (multi-size .ico), preview-icon.ps1 (contact sheet)
-seed/           servers.seed.json - generic example
 ```
 
 ### Notes for anyone editing the XAML

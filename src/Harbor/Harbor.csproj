@@ -22,11 +22,4 @@
     <Resource Include="harbor.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <!-- Copied next to the exe; ConfigStore imports it on first run only. -->
-    <None Include="..\..\seed\servers.seed.json" Link="servers.seed.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
